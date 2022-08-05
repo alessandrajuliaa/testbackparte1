@@ -36,11 +36,16 @@ public class Pessoa implements Serializable {
     private List<Tarefa> tarefas = new ArrayList<>();
     // 186.250.105.247
 
+    
+
     public Pessoa(Integer id, String nome, Departamento departamento, List<Tarefa> tarefas) {
         this.id = id;
         this.nome = nome;
         this.departamento = departamento;
         this.tarefas = tarefas;
+    }
+
+    public Pessoa() {
     }
 
     public Integer getId() {

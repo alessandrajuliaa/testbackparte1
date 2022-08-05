@@ -1,5 +1,7 @@
 package com.alessandra.backParte1.controller;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,18 @@ public class PessoaController {
     @Autowired
     private PessoaService pessoaService;
 
+    @GetMapping()
+    public ResponseEntity<List<Object>> listarPessoas() {
+        List<Object> list = pessoaService.listarPessoas();
+        return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping("/gastos/{nome}/{dataInicial}/{dataFinal}")
+    public ResponseEntity<List<Object>> mediaHoras(@PathVariable String nome, @PathVariable String dataInicial, @PathVariable String dataFinal) throws ParseException {
+        List<Object> list = pessoaService.mediaHoras(nome, dataInicial, dataFinal);
+        return ResponseEntity.ok().body(list);
+    }
+
     @PostMapping()
     public ResponseEntity<Pessoa> insert(@RequestBody Pessoa pessoa) {
         Pessoa obj = pessoaService.insert(pessoa);
@@ -32,6 +46,7 @@ public class PessoaController {
     @PutMapping("/{id}")
     public ResponseEntity<Pessoa> update(@PathVariable Integer id, @RequestBody Pessoa pessoa) {
         Pessoa obj = pessoaService.update(id, pessoa);
+        // Pessoa obj = null;
         return ResponseEntity.ok().body(obj);
     }
 
@@ -41,9 +56,5 @@ public class PessoaController {
         return ResponseEntity.ok().build();
     }
 
-    // @GetMapping()
-    // public ResponseEntity<List<Pessoa>> listarPessoas() {
-    // pessoaService.listarPessoas();
-    // return ResponseEntity.ok().build();
-    // }
+    
 }
