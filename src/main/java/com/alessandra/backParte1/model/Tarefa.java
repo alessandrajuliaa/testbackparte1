@@ -1,6 +1,7 @@
 package com.alessandra.backParte1.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ public class Tarefa implements Serializable {
     private String titulo;
     @Column(length = 255)
     private String descricao;
-    private Date prazo;
+    private Calendar prazo;
     private Integer duracao;
     private Boolean finalizado;
 
@@ -40,7 +41,7 @@ public class Tarefa implements Serializable {
     public Tarefa() {
     }
 
-    public Tarefa(Integer id, String titulo, String descricao, Date prazo, Integer duracao, Boolean finalizado,
+    public Tarefa(Integer id, String titulo, String descricao, Calendar prazo, Integer duracao, Boolean finalizado,
             Departamento departamento,
             Pessoa pessoa) {
         this.id = id;
@@ -77,11 +78,11 @@ public class Tarefa implements Serializable {
         this.descricao = descricao;
     }
 
-    public Date getPrazo() {
+    public Calendar getPrazo() {
         return prazo;
     }
 
-    public void setPrazo(Date prazo) {
+    public void setPrazo(Calendar prazo) {
         this.prazo = prazo;
     }
 

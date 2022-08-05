@@ -20,6 +20,12 @@ public class DepartamentoController {
     @Autowired
     private DepartamentoService service;
 
+    @GetMapping()
+    public ResponseEntity<List<Object>> get() {
+        List<Object> obj = service.get();
+        return ResponseEntity.ok().body(obj);
+    }
+
     @PostMapping()
     public ResponseEntity<Departamento> insert(@RequestBody Departamento departamento) {
         Departamento obj = service.insert(departamento);

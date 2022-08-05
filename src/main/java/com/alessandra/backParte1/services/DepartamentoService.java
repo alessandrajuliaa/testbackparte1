@@ -14,6 +14,11 @@ public class DepartamentoService {
     @Autowired
     private DepartamentoRepository repository;
 
+    public List<Object> get() {
+        List<Object> obj = repository.get();
+        return obj;
+    }
+
     public Departamento insert(Departamento departamento) {
         Departamento obj = repository.save(departamento);
         return obj;
